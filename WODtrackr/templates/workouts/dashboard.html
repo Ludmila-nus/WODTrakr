@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block head_title %}Dashboard{% endblock %}
+
+{% block page_content %}
+
+{% include '_includes/_principal_menu.html' %}
+ 
+<h1>My Dashboard</h1>
+
+<h2>Recent Exercises</h2>
+<ul>
+    {% for exercise in recent_exercises %}
+        <li>{{ exercise.name }} - {{ exercise.date }}</li>
+    {% empty %}
+        <li>You haven't registered any exercises recently.</li>
+    {% endfor %}
+</ul>
+
+<h2>Recent Workouts</h2>
+<ul>
+    {% for workout in recent_workouts %}
+        <li>{{ workout.name }} - {{ workout.date }} - Duration: {{ workout.duration }} minutes</li>
+    {% empty %}
+        <li>You haven't registered any workouts recently.</li>
+    {% endfor %}
+</ul>
+
+<h2>Goals</h2>
+<ul>
+    {% for goal in goals %}
+        <li>{{ goal.description }} - {{ goal.target_date }}</li>
+    {% empty %}
+        <li>You have no goals registered.</li>
+    {% endfor %}
+</ul>
+
+<h2>Injury History</h2>
+<ul>
+    {% for injury in injury_history %}
+        <li>{{ injury.description }} - {{ injury.date }}</li>
+    {% empty %}
+        <li>No injuries registered.</li>
+    {% endfor %}
+</ul>
+
+<h2>Rest Periods</h2>
+<ul>
+    {% for rest in rest_periods %}
+        <li>Start: {{ rest.start_date }} - End: {{ rest.end_date }}</li>
+    {% empty %}
+        <li>No rest periods registered.</li>
+    {% endfor %}
+</ul>
+
+<h2>Average Workout Duration</h2>
+<p>Your average workout duration is: {{ average_workout_duration|floatformat:1 }} minutes</p>
+
+{% endblock %}

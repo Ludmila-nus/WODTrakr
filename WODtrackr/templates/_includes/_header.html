@@ -1,0 +1,13 @@
+{% load static %}
+
+<header>
+  <a href=""><img style="width: 150px;" src="{% static 'img/logoWODTrackr.png' %}" alt="Logotipo WODTrackr" /></a>
+
+  <nav>
+    {% if not user.is_authenticated %}
+      {% include '_includes/_menu.html' %}
+    {% else %}
+      {% include '_includes/_user_menu.html' %}
+    {% endif %}
+  </nav>
+</header>

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block head_title %}Contact{% endblock %}
+
+{% block page_content %}
+  <h1>Contact</h1>
+  {% if success %}
+    <p>The form has been sent</p>
+  {% else %}
+    <form action="" method="POST">
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <button>Send</button>
+  </form>
+  {% endif %}
+{% endblock %}
