@@ -2,13 +2,25 @@
 
 {% block page_content %}
 
+
+<h2>Routines</h2>
+<p>Select an option:</p>
+
+<div>
+    <a href="{% url 'workouts:create_routine' %}" class="btn btn-primary">Create New Routine</a>
+    <a href="{% url 'workouts:list_routines' %}" class="btn btn-secondary">View Routine List</a>
+</div>
+
+
+<h2>Create a New Workout</h2>
 <form method = "post">
     {% csrf_token %}
 
     {{ form.as_p}}
 
-    <button type="submit">Save</button>
+    <button type="submit" class="btn btn-primary">Create Workout</button>
 </form>
 
-{% endblock %}
+<a href="{% url 'workouts:routines' %}" class="btn btn-primary">Back to Routines</a>
 
+{% endblock %}

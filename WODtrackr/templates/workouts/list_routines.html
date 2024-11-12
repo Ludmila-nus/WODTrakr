@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block page_content %}
+{% for routine in routines %}
+    <p>{{ routine.exercise.name }} - {{ routine.weight }} kg</p>
+{% endfor %}
+
+
+<a href="{% url 'workouts:routines' %}" class="btn btn-primary">Back to Routines</a>
+
+{% endblock %}

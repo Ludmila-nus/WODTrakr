@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block head_title %}
+  Dictionary
+{% endblock %}
+
+{% block head %}
+  {{ block.super }} <!-- This ensures that any other content in the head block in layout.html is still present -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block page_content %}
+  <h2>CrossFit Dictionary</h2>
+  {% for category in terms|dictsort:"category"|groupby:"category" %}
+   <h3>{{ category.grouper }}</h3>
+   {% for term in category.list %}
+     <div>
+       <h4>{{ term.term }}</h4>
+       <p>{{ term.definition }}</p>
+     </div>
+   {% endfor %}
+{% endfor %}
+
+
+  <div class="chart-container">
+    <canvas id="termsChart"></canvas>
+  </div>
+
+  <!-- Include the JavaScript chart configuration file -->
+  <script src="{% static 'js/config_chart.js' %}"></script>
+{% endblock %}

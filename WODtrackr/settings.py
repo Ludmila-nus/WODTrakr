@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     "ckeditor",
     
     "core",
+    "dictionary",
     "users",
     "workouts",
+    "groups",
 ]
 
 MIDDLEWARE = [
@@ -204,5 +206,6 @@ EMAIL_HOST_PASSWORD = "cjsc oezv qguc qdkt"
 
 
 LOGIN_URL = "/login"
-LOGIN_REDIRECT_URL = "/"  # La vista a la que se redirige después de un login exitoso
-LOGOUT_REDIRECT_URL = "/"  # La vista a la que se redirige después de un logout
+LOGIN_REDIRECT_URL = "/"  # The view to be redirected to after a successful login
+LOGOUT_REDIRECT_URL = "/"  # The view to redirect to after a logout
+

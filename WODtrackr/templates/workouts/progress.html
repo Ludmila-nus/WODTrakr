@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block head_title %}
+  Progress
+{% endblock %}
+
+{% block head %}
+  {{ block.super }} <!-- This ensures that any other content in the head block in layout.html is still present -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block page_content %}
+  <div class="content-header">
+    <h1>Your Workout Progress</h1>
+    <p>Track your gains and improvements over time! See how you've progressed in each workout.</p>
+  </div>
+
+  <!--Canvas where the chart will be render-->
+  <div class="chart-container">
+    <canvas id="progressChart"></canvas>
+  </div>
+
+  <div id="loadingMessage">
+    <p>Loading progress data...</p>
+  </div>
+
+{% endblock %}
+
+{% block extra_js %}
+  {{ block.super }}
+  <!-- Include the JavaScript chart configuration file after the content loads -->
+  <script src="{% static 'js/progress_chart.js' %}"></script>
+{% endblock %}
