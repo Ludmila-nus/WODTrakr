@@ -1,4 +1,4 @@
-![WODTrakr - CrossFit tracking application](static\img\WODTrackr.png)
+![WODTrakr - CrossFit tracking application](static/img/WODTrackr.png)
 
 
 ### Description
@@ -43,6 +43,8 @@ This application is designed for individual athletes and trainers...
 - **Chart.js** for interactive chart rendering
 - **Bootstrap** for responsive design
 - **CKEditor** for rich text fields
+- **JavaScript** For interactive features and dynamic content
+
 
 ## Contributing
 If you'd like to contribute to WODTrackr, please...
