@@ -1,4 +1,5 @@
-![WODTrakr - CrossFit tracking application](image.png)
+![WODTrakr - CrossFit tracking application](static\img\WODTrackr.png)
+
 
 ### Description
 **WODTrackr** is a Django-based web application designed for CrossFit enthusiasts and trainers to track, monitor, and analyze workout performance. With WODTrackr, users can log individual exercises or complete workout routines, join groups to compare performance, set personal goals, and track progress over time with insightful visualizations. This application is ideal for anyone looking to maintain a detailed record of their CrossFit training journey.

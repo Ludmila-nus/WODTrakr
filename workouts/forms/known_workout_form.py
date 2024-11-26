@@ -6,6 +6,8 @@ class KnownWorkoutForm(forms.ModelForm):
         model = KnownWorkout
         exclude = ['user']
         widgets = {
+
             'name': forms.Select(attrs={'class': 'form-control'}),
+            'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
         }
 

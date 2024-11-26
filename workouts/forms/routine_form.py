@@ -6,8 +6,9 @@ class RoutineForm(forms.ModelForm):
         model = Routine
         exclude = ['user']
         widgets = {
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'type': forms.Select(attrs={'class': 'form-control'}),
-            'date': forms.DateField(widget=forms.DateInput(attrs={'type': 'date'})),
             'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
         }
+
 

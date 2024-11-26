@@ -8,7 +8,6 @@ from ckeditor.fields import RichTextField
 from .exercise_model import Exercise
 from .routine_model import Routine
 from django.contrib.auth.models import User
-from django.utils import timezone
 from groups.models.workout_group_model import WorkoutGroup
 
 
@@ -25,7 +24,7 @@ class Workout(models.Model):
     sets = models.IntegerField(null=True, blank=True)
     rounds = models.IntegerField(default=1, null=True, blank=True)
     time = models.DurationField(help_text="Duration in minutes:seconds", null=True, blank=True)
-    date = models.DateField(default=timezone.now)
+    date = models.DateField(default=timezone.now, null=True, blank=True)
     notes = RichTextField(blank=True, null=True)
     group = models.ForeignKey(
         WorkoutGroup,
@@ -34,7 +33,14 @@ class Workout(models.Model):
         null=True,
         blank=True,
     )
-    shared_with_group = models.BooleanField(default=False)
+    shared_with_group = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.routine.user.username} - {self.exercise.name} ({self.exercise.abbreviation}): {self.weight} on {self.date}"
+        #  Checks if there is a routine and if the routine has a user associated with it.
+        routine_user = {self.routine.user.username} if self.routine and self.routine.user else "No Routine"
+        # Check if there is an associated exercise
+        exercise_name = self.exercise.name if self.exercise else "No Exercise"
+        return f"{routine_user} - {exercise_name} ({self.exercise.abbreviation if self.exercise else ''}): {self.weight} on {self.date}"
+
+   
+   

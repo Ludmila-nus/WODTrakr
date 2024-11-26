@@ -1,17 +1,17 @@
 <ul>
-    <li>
-      <a href="{% url 'users:logout' %}">Logout</a>
-    </li>
-    <li>
-      <a href="{% url 'users:user_preferences' %}">Preferences</a>
-    </li>
-    <li>
-      <a href="{% url 'users:contact' %}">Contact us</a>
-    </li>
-    <li>
-      <a href="{% url 'dictionary:dictionary' %}">Dictionary</a>
-    </li>
-        
-  
+  <li>
+    <a href="{% url 'users:logout' %}">Logout</a>
+  </li>
+  <li>
+    <a href="{% url 'users:user_preferences' %}">Preferences</a>
+  </li>
+  <li>
+    <a href="{% url 'users:contact' %}">Contact us</a>
+  </li>
+  <li>
+    <a href="{% url 'dictionary:dictionary' %}">Dictionary</a>
+  </li>
+  <li>
+    <a href="{% url 'users:profile_detail' request.user.profile.pk %}">Profile</a>
+  </li>
 </ul>
-

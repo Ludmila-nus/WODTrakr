@@ -18,7 +18,7 @@
 <h2>Recent Workouts</h2>
 <ul>
     {% for workout in recent_workouts %}
-        <li>{{ workout.name }} - {{ workout.date }} - Duration: {{ workout.duration }} minutes</li>
+        <li>{{ workout.name }} - {{ workout.date }} - Duration: {{ workout.time}} minutes</li>
     {% empty %}
         <li>You haven't registered any workouts recently.</li>
     {% endfor %}

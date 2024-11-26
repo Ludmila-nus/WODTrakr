@@ -8,8 +8,8 @@ from django.utils import timezone
 
 class Exercise(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="exercises")
-    name = models.CharField(max_length=100)
-    abbreviation = models.CharField(max_length=10, default='--')
+    name = models.CharField(max_length=100, null=True, blank=True)
+    abbreviation = models.CharField(max_length=10, default='--', null=True, blank=True)
     date = models.DateField(default=timezone.now, null=True, blank=True,)
 
     def __str__(self):

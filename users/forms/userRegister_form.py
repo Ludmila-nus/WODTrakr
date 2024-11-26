@@ -1,26 +1,30 @@
 from django import forms
-from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.models import User
 
 
-class UserRegisterForm(forms.Form):
-    username = forms.CharField(max_length=140, label="User name")
-    first_name = forms.CharField(max_length=140, label="Name")
-    last_name = forms.CharField(max_length=140, label="Last name")
-    email = forms.EmailField(max_length=140, label="Email")
+class UserRegisterForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
 
-    password1 = forms.CharField(label='password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat your password', widget=forms.PasswordInput)
+    class Meta:
+        model = User
+        fields = [
+            "first_name",
+            "username",
+            "email",
+            "password"
+        ]
 
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is already in use.")
+        return email
+        
 
-    def clean_password2(self):
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
+    def save(self):
+        user = super().save(commit=True)
+        user.set_password(self.cleaned_data["password"])
+        user.save()
 
-        if password1 != password2 and password1 != '':
-            raise forms.ValidationError('Passwords do not match')
+        return user
 
-        if password2 != '':
-            validate_password(password2)
-
-        return password2
-    

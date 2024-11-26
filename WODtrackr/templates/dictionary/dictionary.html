@@ -13,15 +13,12 @@
 
 {% block page_content %}
   <h2>CrossFit Dictionary</h2>
-  {% for category in terms|dictsort:"category"|groupby:"category" %}
-   <h3>{{ category.grouper }}</h3>
-   {% for term in category.list %}
-     <div>
-       <h4>{{ term.term }}</h4>
-       <p>{{ term.definition }}</p>
-     </div>
-   {% endfor %}
-{% endfor %}
+  {% for term in terms %}
+    <div>
+      <h4>{{ term.term }} ({{ term.category }})</h4>
+      <p>{{ term.definition }}</p>
+    </div>
+  {% endfor %}
 
 
   <div class="chart-container">

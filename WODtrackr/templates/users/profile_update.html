@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+  Profile
+{% endblock %}
+
+{% block page_content %}
+  <div class="container">
+    {% include '_includes/_messages.html' %}
+
+    <h1>Editar perfil</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+      <!-- The enctype=“multipart/form-data” attribute is required if you are handling files such as profile_picture-->
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          {{ form.full_name|as_crispy_field }}
+          {{ form.birthdate|as_crispy_field }}
+          {{ form.profile_picture|as_crispy_field }}
+        </div>
+      </div>
+      <button class="btn btn-secondary">Update</button>
+    </form>
+  </div>
+{% endblock %}
+

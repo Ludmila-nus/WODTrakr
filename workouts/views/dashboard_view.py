@@ -28,7 +28,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         
         # Calculate average duration of workouts
         average_duration = (
-            context['recent_workouts'].aggregate(Avg('duration'))['duration__avg']
+            context['recent_workouts'].aggregate(Avg('time'))['time__avg']
             if context['recent_workouts'].exists() else 0
         )
         context['average_workout_duration'] = average_duration

@@ -1,19 +1,25 @@
 {% extends "layout.html" %}
 
-{% block head_title %}Register{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Welcome to WODTrakr{% endblock %}
 
 {% block page_content %}
+<div class="container">
+  {% include '_includes/_messages.html' %}
+
   <h1>Register</h1>
-  {% if form  %}
-    {% if error_message %}
-      <p style="color: red;">{{ error_message }}</p>
-    {% endif %}
     <form action="" method="post">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button>Enviar</button>
+      <div class="register">
+        <div class="register_form">
+          {{ form.first_name|as_crispy_field }}
+          {{ form.username|as_crispy_field }}
+          {{ form.email|as_crispy_field }}
+          {{ form.password|as_crispy_field }}
+        </div>
+      </div>
+      <button class="btn btn-secondary">Register</button>
     </form>
-  {% else %}
-    <p>{{ msj }}</p>
-  {% endif %}
+</div>
 {% endblock %}

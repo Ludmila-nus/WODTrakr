@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     "thumbnails",
     "debug_toolbar",
     "ckeditor",
-    
+    "crispy_forms",
+    "crispy_bootstrap5",
+
     "core",
     "dictionary",
     "users",
@@ -209,3 +211,5 @@ LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "/"  # The view to be redirected to after a successful login
 LOGOUT_REDIRECT_URL = "/"  # The view to redirect to after a logout
 
+CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

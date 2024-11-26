@@ -4,10 +4,13 @@
 # It can be referenced by other models or views to streamline workout selection and provide consistent workout definitions.
 
 from django.db import models
+from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 class KnownWorkout(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField()
+    date = models.DateField(default=timezone.now, null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     type = models.CharField(
         max_length=20,
         choices=[
@@ -18,8 +21,9 @@ class KnownWorkout(models.Model):
             ("chipper", "Chipper"),
             ("endurance", "Endurance"),
             ("tabata", "Tabata"),
-        ],
+        ],null=True, blank=True
     )
+    notes = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return self.name

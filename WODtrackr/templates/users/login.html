@@ -1,17 +1,23 @@
 {% extends "layout.html" %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}Login{% endblock %}
 
 {% block page_content %}
-  <h1>Login</h1>
+<div class="container">
+  {% include '_includes/_messages.html' %}
 
-  {% if error_message %}
-    <p style="color: red;">{{ error_message }}</p>
-  {% endif %}
-  
-  <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button>Enviar</button>
-  </form>
+  <h1>Login</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="login">
+        <div class="login_form">
+          {{ form.username|as_crispy_field }}
+          {{ form.password|as_crispy_field }}
+        </div>
+      </div>
+      <button class="btn btn-secondary">Register</button>
+    </form>
+</div>
+
 {% endblock %}

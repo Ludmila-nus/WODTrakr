@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+  Profile
+{% endblock %}
+
+{% block page_content %}
+  <div class="container">
+    {% include '_includes/_messages.html' %}
+
+    <h1>Profile</h1>
+    
+    <p>Birthdate: {{ profile.birthdate|default_if_none:'nothing to show' }}</p>
+    <p>
+      {% if profile.profile_picture %}
+        <img width="100" src="{{ profile.profile_picture.url }}" alt="" />
+      {% else %}
+        profile picture not available
+      {% endif %}
+    </p>
+    <p></p>
+    {% if profile.user == request.user %}
+      <p>
+        <a href="{% url 'users:profile_update' profile.pk %}">Edit your profile</a>
+      </p>
+    {% endif %}
+  </div>
+{% endblock %}

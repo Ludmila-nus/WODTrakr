@@ -1,0 +1,16 @@
+<h2>Add Exercises to the Routine</h2>
+
+<form id="WorkoutRegister" method="post">
+  <!-- Displays the forms of the FormSet -->
+  {% csrf_token %}
+  {{ workout_formset.management_form }}
+  {% for form in workout_formset %}
+    <div class="form-row">{{ form.as_p }}</div>
+  {% endfor %}
+  <div id="emptyFormTemplate" style="display:none;">{{ workout_formset.empty_form.as_p }}</div>
+  <button type="button" id="" class="btn btn-secondary">Save and Add Another Workout</button>
+</form>
+
+<button type="submit" id="submitAllButton" class="btn btn-primary" name="routine_form">Submit All Workouts</button>
+
+<a href="{% url 'workouts:routines' %}" class="btn btn-primary">Back to Routines</a>
