@@ -1,17 +1,59 @@
-<ul>
-  <li>
-    <a href="{% url 'users:logout' %}">Logout</a>
-  </li>
-  <li>
-    <a href="{% url 'users:user_preferences' %}">Preferences</a>
-  </li>
-  <li>
-    <a href="{% url 'users:contact' %}">Contact us</a>
-  </li>
-  <li>
-    <a href="{% url 'dictionary:dictionary' %}">Dictionary</a>
-  </li>
-  <li>
-    <a href="{% url 'users:profile_detail' request.user.profile.pk %}">Profile</a>
-  </li>
-</ul>
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'core:welcome' %}"><img style="width: 150px;" src="{% static 'img/logoWODTrackr.png' %}" alt="Logotipo WODTrackr" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'users:profile_detail' request.user.profile.pk %}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:user_preferences' %}">Preferences</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dictionary:dictionary' %}">Dictionary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:contact' %}">Contact us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:dashboard' %}">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:training_manager' %}">Training Manager</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:progress' %}">Progress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:goals' %}">Goals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:view_statistics' %}">View Statistics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:summary' %}">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:compare_routines' %}">Compare Routines</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'workouts:log_rest' %}">Log Rest</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

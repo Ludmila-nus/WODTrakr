@@ -12,14 +12,26 @@
 {% endblock %}
 
 {% block page_content %}
-  <h2>CrossFit Dictionary</h2>
-  {% for term in terms %}
-    <div>
-      <h4>{{ term.term }} ({{ term.category }})</h4>
-      <p>{{ term.definition }}</p>
+  <div class="container my-4">
+    <h2 class="text-center mb-4">CrossFit Dictionary</h2>
+    <!--editar el buscador para que funcione-->
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <div class="row">
+      {% for term in terms %}
+        <div class="col-md-6 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h4 class="card-title">{{ term.term }} <small class="text-muted">({{ term.category }})</small></h4>
+              <p class="card-text">{{ term.definition }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
-
+  </div>
 
   <div class="chart-container">
     <canvas id="termsChart"></canvas>

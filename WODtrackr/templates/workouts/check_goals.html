@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+  Set Goals
+{% endblock %}
+
+{% block page_content %}
+
+  <h2>Check your goals</h2>
+  <ul>
+    {% for goal in goals %}
+      <li>
+        <label for="completed">{{ goal.exercise }} - {{ goal.target_weight }} - {{ goal.notes }}</label>
+        <input type="checkbox" data-goal-id="{{ goal.id }}" name="completed" value="goal" />
+
+        <label for="date">Target Date:</label>
+        <input type="date" id="goal_{{ goal.id }}_date" name="date" value="goal" />
+
+        <button type="button" class="update-goal" data-goal-id="{{ goal.id }}">Update Goal</button>
+      </li>
+    {% empty %}
+      <li>You have no goals registered.</li>
+    {% endfor %}
+  </ul>
+
+  <script src="{% static 'js/check_goals.js' %}"></script>
+  
+{% endblock %}

@@ -1,8 +1,30 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block head_title %}Set Goals{% endblock %}
 
 {% block page_content %}
 
-<h2>Set Goals</h2>
+<h2>Track Your Progress, Track Your Progress</h2>
+<h3>Set Your new Goal</h3>
+
+<form class="ajaxForm" method="post" data-url="{% url 'workouts:set_goals' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary" name="goals_form">Submit Goal</button>
+</form>
+
 {% endblock %}
+
+{% block extra_js %}
+  {{ block.super }}
+  <!-- Include the JavaScript configuration file for form options after the content has loaded -->
+  <script src="{% static 'js/set_goals.js' %}"></script>
+{% endblock %}
+
+
+
+
+
+
+

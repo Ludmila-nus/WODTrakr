@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+  Set Goals
+{% endblock %}
+
+{% block page_content %}
+  <h2>Goals</h2>
+  <div>
+    <a href="{% url 'workouts:set_goals' %}" class="btn btn-primary">Set Goals</a>
+    <a href="{% url 'workouts:goals_list'  %}" class="btn btn-primary">Check your Goals</a>
+  </div>
+
+  <h3>Your Goals List</h3>
+  <ul>
+    {% for goal in goals %}
+      <li>
+        {% if goal.is_completed %}
+          <span class="completed">✅</span>
+        {% else %}
+          <span class="not-completed">❌</span>
+        {% endif %} {{ goal.exercise }} - {{ goal.target_weight }} - {{ goal.notes }}
+      </li>
+    {% empty %}
+      <li>You have no goals registered.</li>
+    {% endfor %}
+  </ul>
+
+  
+
+{% endblock %}

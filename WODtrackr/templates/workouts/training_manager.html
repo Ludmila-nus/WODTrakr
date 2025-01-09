@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block head_title %}Routines{% endblock %}
+
+{% block page_content %}
+
+<h2>Training Manager</h2>
+<p>Select an option:</p>
+
+<div>
+    <a href="{% url 'workouts:training' %}" class="btn btn-primary">Training</a>
+    <a href="{% url 'workouts:list_training' %}" class="btn btn-secondary">View Training List</a>
+</div>
+
+{% endblock %}

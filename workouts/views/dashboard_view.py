@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from ..models import Exercise, Workout, Goals, InjuryHistory, RestPeriod
+from ..models import Routine, Workout, Goals, InjuryHistory, RestPeriod
 from django.db.models import Avg
 
 
@@ -11,8 +11,8 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         # Call the original context
         context = super().get_context_data(**kwargs)
         
-        # Get recent exercises
-        context['recent_exercises'] = Exercise.objects.filter(user=self.request.user).order_by('-date')[:5]
+        # Get recent Routine
+        context['recent_routines'] = Routine.objects.filter(user=self.request.user).order_by('-date')[:5]
         
         # Get recent workouts
         context['recent_workouts'] = Workout.objects.filter(user=self.request.user).order_by('-date')[:5]

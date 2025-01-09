@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block head_title %}Training List{% endblock %}
+
+{% block page_content %}
+
+<h2>Training List</h2>
+
+{% for routine in routines %}
+    <p>{{ routine.exercise.name }} - {{ routine.weight }} kg</p>
+{% endfor %}
+
+
+<a href="{% url 'workouts:training_manager' %}" class="btn btn-primary">Back to Training Manager</a>
+
+{% endblock %}
